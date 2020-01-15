@@ -1,0 +1,16 @@
+<kendo-panelbar (stateChange)="stateChange($event)" [selectable]="false">
+  <kendo-panelbar-item
+    *ngFor="let route of getRoutes()"
+    [id]="route.path"
+    [title]="route.data.title"
+    [selected]="route.path == selectedId"
+  >
+    <kendo-panelbar-item
+      *ngFor="let child of route.children"
+      [title]="child?.data.title"
+      [id]="route.path + '/' + child?.path"
+      [selected]="route.path + '/' + child?.path == selectedId"
+    >
+    </kendo-panelbar-item>
+  </kendo-panelbar-item>
+</kendo-panelbar>
